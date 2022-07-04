@@ -1,8 +1,10 @@
-
+import LogoNavigation from './LogoNavigation'
 
 const Contents = () => {
   return (
-    <div className="Contents">Contents</div>
+    <div className="Contents">
+        <LogoNavigation />
+    </div>
   )
 }
 

@@ -9,7 +9,5 @@
 }
 
 body {
-  color: hsl(0, 0%, 100%);
-  overflow-x: hidden;
-  width: 100vw;
+  font-family: "Epilogue", sans-serif;
 }
