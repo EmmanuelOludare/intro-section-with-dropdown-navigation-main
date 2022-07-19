@@ -1,5 +1,7 @@
+import { useState,useRef } from "react"
 import logo from '../images/logo.svg'
-import menuBar from '../images/icon-menu.svg'
+import openMenuBar from '../images/icon-menu.svg'
+import closeMenuBar from '../images/icon-close-menu.svg'
 import arrowUp from '../images/icon-arrow-up.svg'
 import arrowDown from '../images/icon-arrow-down.svg'
 import toDoIcon from '../images/icon-todo.svg'
@@ -8,32 +10,99 @@ import remindersIcon from '../images/icon-reminders.svg'
 import planningIcon from '../images/icon-planning.svg'
 
 const LogoNavigation = () => {
+
+  const [displayOne,setDisplayOne] = useState('none');
+  const [displayTwo,setDisplayTwo] = useState('none');
+  const sitemap__subheadings_one = useRef(null);
+  const sitemap__subheadings_two = useRef(null);
+
+  const [arrowRotateOne,setArrowRotateOne] = useState('rotate(0deg)');
+  const [arrowRotateTwo,setArrowRotateTwo] = useState('rotate(0deg)');
+  const arrow_one = useRef(null);
+  const arrow_two = useRef(null);
+
+  const [sideBarDisplay,setSideBarDisplay] = useState('none');
+  const [sideBarSlide,setSideBarSlide] = useState('translateX(100%)');
+  const sidebar_nav = useRef(null);
+
+
+  const openCloseOne = () => {
+    if (sitemap__subheadings_one.current.style.display === 'none') {
+      setDisplayOne('flex');
+      setArrowRotateOne('rotate(180deg)');
+    }else{
+      setDisplayOne('none');
+      setArrowRotateOne('rotate(0deg)');
+    }
+  };
+
+  const openCloseTwo = () => {
+    if (sitemap__subheadings_two.current.style.display === 'none') {
+      setDisplayTwo('flex');
+      setArrowRotateTwo('rotate(180deg)');
+    }else{
+      setDisplayTwo('none');
+      setArrowRotateTwo('rotate(0deg)');
+    }
+  };
+
+  const openSidebarNav = () => {
+    setSideBarDisplay('flex');
+    setSideBarSlide('translateX(0%)');
+  };
+
+  const closeSidebarNav = () => {
+    setSideBarDisplay('none');
+    setSideBarSlide('translateX(100%)');
+  };
+
   return (
     <div className="LogoNavigation">
-      <img src={logo} alt="logo" className="logo" />
-      <img src={menuBar} alt="menu" className="menuBar" />
-      <sidebar className="sidebar-nav">
-        <ul className="sitemap__headings">
+      <div className="LogoNavigation-container">
+        <img src={logo} alt="logo" className="logo" />
+        <img src={openMenuBar} alt="menu-open" className="openMenuBar" onClick={openSidebarNav} />
+      </div>
+      <sidebar className="sidebar-nav" ref={sidebar_nav} style={{transform:sideBarSlide,display:sideBarDisplay}} >
+        <div className="closeMenu-container"><img src={closeMenuBar} alt="menu-close" className="closeMenuBar" onClick={closeSidebarNav}/></div>
+
+        <ul className="sitemaps">
+
           <li className="sitemap">
-            <div className="sitemap__heading">
-              <h4>Features</h4>
-              <img src={arrowDown} alt="arrow" className="arrow"/>
+
+            <div className="sitemap__heading" onClick={openCloseOne}>
+              <p>Features</p>
+              <img src={arrowDown} alt="arrow" className="arrow" style={{transform:arrowRotateOne}}/>
             </div>
-            <ul className="sitemap__subheadings">
-              <li><img src={toDoIcon} alt="todo-icon" className="todo-icon"/></li>
-              <li><img src={calendarIcon} alt="calendar-icon" className="calendar-icon"/></li>
-              <li><img src={remindersIcon} alt="reminders-icon" className="reminders-icon"/></li>
-              <li><img src={planningIcon} alt="planning-icon" className="planning-icon"/></li>
+
+            <ul className="sitemap__subheadings" style={{display:displayOne}} ref={sitemap__subheadings_one} >
+              <li className="sitemap__subheading"><img src={toDoIcon} alt="todo-icon" className="todo-icon"/><a href="#" className="sitemap__subheading-text">Todo List</a></li>
+              <li className="sitemap__subheading"><img src={calendarIcon} alt="calendar-icon" className="calendar-icon"/><a href="#"  className="sitemap__subheading-text">Calendar</a></li>
+              <li className="sitemap__subheading"><img src={remindersIcon} alt="reminders-icon" className="reminders-icon"/><a href="#"  className="sitemap__subheading-text">Reminders</a></li>
+              <li className="sitemap__subheading"><img src={planningIcon} alt="planning-icon" className="planning-icon"/><a href="#" className="sitemap__subheading-text">Planning</a></li>
             </ul>
+
           </li>
 
-          <li className="sitemap">Company</li>
-          <li className="sitemap">Careers</li>
-          <li className="sitemap">About</li>
+          <li className="sitemap">
+            <div className="sitemap__heading" onClick={openCloseTwo}>
+                <p>Company</p>
+                <img src={arrowDown} alt="arrow" className="arrow" ref={arrow_two} style={{transform:arrowRotateTwo}} />
+            </div>
+
+            <ul className="sitemap__subheadings"  style={{display:displayTwo}} ref={sitemap__subheadings_two} >
+              <li className="sitemap__subheading"><a href="#"  className="sitemap__subheading-text">History</a></li>
+              <li className="sitemap__subheading"><a href="#"  className="sitemap__subheading-text">Our Team</a></li>
+              <li className="sitemap__subheading"><a href="#"  className="sitemap__subheading-text">Blog</a></li>
+            </ul>
+
+          </li>
+
+          <li className="sitemap"><p><a href="#">Careers</a></p></li>
+          <li className="sitemap"><p><a href="#">About</a></p></li>
         </ul>
         <div className="ctas">
-          <p className="ctas__login cta">Login</p>
-          <p className="ctas__register cta">Register</p>
+          <button className="ctas__login cta">Login</button>
+          <button className="ctas__register cta">Register</button>
         </div>
       </sidebar>
     </div>
