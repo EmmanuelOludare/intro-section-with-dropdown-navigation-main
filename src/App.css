@@ -18,21 +18,24 @@
 }
 
 .sidebar-nav {
-  background-color: var(--White);
+  background-color: var(--Almost-White);
   position: absolute;
   right: 0;
   height: 100vh;
-  width: 50vw;
+  width: 55vw;
   padding: 1em 1.2em 0em 1.2em;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 1.2em;
   transform: translateX(100%);
   transition: all 0.7s ease-in-out;
+  color: var(--Almost-Black);
+  z-index: 3;
 }
 
 .openMenuBar {
   cursor: pointer;
+  z-index: 2;
 }
 
 .closeMenuBar {
@@ -50,6 +53,7 @@
 
 .sitemap > p > a {
   text-decoration: none;
+  color: var(--Almost-Black);
 }
 
 .sitemap__heading {
@@ -80,6 +84,7 @@
 
 .sitemap__subheading-text {
   text-decoration: none;
+  color: var(--Almost-Black);
 }
 
 .ctas {
@@ -103,4 +108,69 @@
   border: 2px solid var(--Medium-Gray);
   border-radius: 8px;
   text-align: center;
+}
+
+.MainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5em 0 0 0;
+  gap: 1.8em;
+}
+
+.heroImage {
+  width: 100%;
+}
+
+.hero__text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.8em;
+  text-align: center;
+  gap: 1em;
+}
+
+.hero__text-header {
+  font-size: 2.3rem;
+  font-weight: bolder;
+}
+
+.hero__text-paragraph {
+  line-height: 1.5em;
+  color: var(--Medium-Gray);
+}
+
+.hero__text-button {
+  color: var(--Almost-White);
+  background-color: var(--Almost-Black);
+  padding: 1em 1.5em;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.clients {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.5em 0 0 0;
+}
+
+.clients > img {
+  height: 20px;
+}
+
+.overlay {
+  background-color: var(--Almost-Black);
+  opacity: 0.8;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  display: none;
+  transition: all 0.8s ease-in-out;
+  transition-delay: 0.5s;
 }

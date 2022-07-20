@@ -2,14 +2,13 @@ import { useState,useRef } from "react"
 import logo from '../images/logo.svg'
 import openMenuBar from '../images/icon-menu.svg'
 import closeMenuBar from '../images/icon-close-menu.svg'
-import arrowUp from '../images/icon-arrow-up.svg'
 import arrowDown from '../images/icon-arrow-down.svg'
 import toDoIcon from '../images/icon-todo.svg'
 import calendarIcon from '../images/icon-calendar.svg'
 import remindersIcon from '../images/icon-reminders.svg'
 import planningIcon from '../images/icon-planning.svg'
 
-const LogoNavigation = () => {
+const LogoNavigation = (props) => {
 
   const [displayOne,setDisplayOne] = useState('none');
   const [displayTwo,setDisplayTwo] = useState('none');
@@ -21,7 +20,6 @@ const LogoNavigation = () => {
   const arrow_one = useRef(null);
   const arrow_two = useRef(null);
 
-  const [sideBarDisplay,setSideBarDisplay] = useState('none');
   const [sideBarSlide,setSideBarSlide] = useState('translateX(100%)');
   const sidebar_nav = useRef(null);
 
@@ -47,22 +45,22 @@ const LogoNavigation = () => {
   };
 
   const openSidebarNav = () => {
-    setSideBarDisplay('flex');
     setSideBarSlide('translateX(0%)');
+    props.openOverlay();
   };
 
   const closeSidebarNav = () => {
-    setSideBarDisplay('none');
     setSideBarSlide('translateX(100%)');
+    props.closeOverlay();
   };
 
   return (
     <div className="LogoNavigation">
       <div className="LogoNavigation-container">
-        <img src={logo} alt="logo" className="logo" />
-        <img src={openMenuBar} alt="menu-open" className="openMenuBar" onClick={openSidebarNav} />
+        <img src={logo} className="logo" />
+        <img src={openMenuBar} className="openMenuBar" onClick={openSidebarNav} />
       </div>
-      <sidebar className="sidebar-nav" ref={sidebar_nav} style={{transform:sideBarSlide,display:sideBarDisplay}} >
+      <sidebar className="sidebar-nav" ref={sidebar_nav} style={{transform:sideBarSlide}} >
         <div className="closeMenu-container"><img src={closeMenuBar} alt="menu-close" className="closeMenuBar" onClick={closeSidebarNav}/></div>
 
         <ul className="sitemaps">
@@ -71,14 +69,14 @@ const LogoNavigation = () => {
 
             <div className="sitemap__heading" onClick={openCloseOne}>
               <p>Features</p>
-              <img src={arrowDown} alt="arrow" className="arrow" style={{transform:arrowRotateOne}}/>
+              <img src={arrowDown} className="arrow" style={{transform:arrowRotateOne}}/>
             </div>
 
             <ul className="sitemap__subheadings" style={{display:displayOne}} ref={sitemap__subheadings_one} >
-              <li className="sitemap__subheading"><img src={toDoIcon} alt="todo-icon" className="todo-icon"/><a href="#" className="sitemap__subheading-text">Todo List</a></li>
-              <li className="sitemap__subheading"><img src={calendarIcon} alt="calendar-icon" className="calendar-icon"/><a href="#"  className="sitemap__subheading-text">Calendar</a></li>
-              <li className="sitemap__subheading"><img src={remindersIcon} alt="reminders-icon" className="reminders-icon"/><a href="#"  className="sitemap__subheading-text">Reminders</a></li>
-              <li className="sitemap__subheading"><img src={planningIcon} alt="planning-icon" className="planning-icon"/><a href="#" className="sitemap__subheading-text">Planning</a></li>
+              <li className="sitemap__subheading"><img src={toDoIcon} className="todo-icon"/><a href="#" className="sitemap__subheading-text">Todo List</a></li>
+              <li className="sitemap__subheading"><img src={calendarIcon} className="calendar-icon"/><a href="#"  className="sitemap__subheading-text">Calendar</a></li>
+              <li className="sitemap__subheading"><img src={remindersIcon} className="reminders-icon"/><a href="#"  className="sitemap__subheading-text">Reminders</a></li>
+              <li className="sitemap__subheading"><img src={planningIcon} className="planning-icon"/><a href="#" className="sitemap__subheading-text">Planning</a></li>
             </ul>
 
           </li>
@@ -86,7 +84,7 @@ const LogoNavigation = () => {
           <li className="sitemap">
             <div className="sitemap__heading" onClick={openCloseTwo}>
                 <p>Company</p>
-                <img src={arrowDown} alt="arrow" className="arrow" ref={arrow_two} style={{transform:arrowRotateTwo}} />
+                <img src={arrowDown} className="arrow" ref={arrow_two} style={{transform:arrowRotateTwo}} />
             </div>
 
             <ul className="sitemap__subheadings"  style={{display:displayTwo}} ref={sitemap__subheadings_two} >
