@@ -174,3 +174,143 @@
   transition: all 0.8s ease-in-out;
   transition-delay: 0.5s;
 }
+
+/*? for screens greater than 600px but less than a thousand*/
+@media (min-width: 1000px) {
+  .MainPage {
+    flex-direction: row-reverse;
+    padding: 0 0 0 0;
+    gap: 1em;
+    margin: 0 8% 0 8%;
+  }
+
+  .hero__image-container {
+    width: 42%;
+  }
+
+  .heroImage {
+    content: url("./images/image-hero-desktop.png");
+  }
+
+  .hero__text-container {
+    align-items: flex-start;
+    padding: 0 0;
+    text-align: left;
+    gap: 3em;
+    width: 42%;
+  }
+
+  .hero__text-header {
+    font-size: 5rem;
+  }
+
+  .hero__text-paragraph {
+    line-height: 1.5em;
+  }
+
+  .clients {
+    gap: 2em;
+    padding: 0 0 0 0;
+  }
+
+  .LogoNavigation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    margin: 2% 2% 0 2%;
+  }
+
+  .LogoNavigation-container {
+    align-items: center;
+    justify-content: center;
+    gap: 0vw;
+    padding: 0;
+    position: relative;
+    margin: 0;
+  }
+
+  .sidebar-nav {
+    background-color: transparent;
+    position: relative;
+    right: 0px;
+    height: 0vh;
+    width: 0vw;
+    padding: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3em;
+    transform: translateX(0%);
+    z-index: 0;
+    align-items: center;
+  }
+
+  .sitemaps {
+    flex-direction: row;
+    position: relative;
+    gap: 0.8em;
+  }
+
+  .sitemap > p > a {
+    text-decoration: none;
+    color: var(--Almost-Black);
+  }
+
+  .sitemap__heading {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    cursor: pointer;
+  }
+
+  .sitemap__subheading {
+    display: flex;
+    gap: 10px;
+  }
+
+  .sitemap__subheadings {
+    list-style: none;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    transition: all 0.5s ease-in-out;
+    position: fixed;
+  }
+
+  .sitemap__subheading-text {
+    text-decoration: none;
+    color: var(--Almost-Black);
+  }
+
+  .ctas {
+    flex-direction: row;
+    gap: 1.5em;
+  }
+
+  .cta {
+    background: transparent;
+    border: none;
+  }
+
+  .ctas__login {
+  }
+
+  .ctas__register {
+    padding: 0.7em 3.5em;
+    border: 2px solid var(--Medium-Gray);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .openMenuBar {
+    display: none;
+    z-index: -2;
+  }
+
+  .closeMenuBar {
+    display: none;
+    z-index: -2;
+  }
+}
